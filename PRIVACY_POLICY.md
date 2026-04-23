@@ -27,4 +27,4 @@ HorizonBar does not integrate with any third-party services, APIs, or trackers. 
 If we make any significant changes to this Privacy Policy, we will update the "Effective Date" at the top of this document.
 
 ## 6. Contact
-If you have any questions or concerns about this Privacy Policy, please contact the developer via the Chrome Web Store support tab.
+If you have any questions or concerns about this Privacy Policy, please contact the developer via the Chrome Web Store support tab or please contact us at: ajaynatsu@gmail.com

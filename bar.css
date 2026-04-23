@@ -1,0 +1,202 @@
+/* bar.css */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: rgba(30, 30, 30, 0.98);
+    backdrop-filter: blur(10px);
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+#control-strip {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+    gap: 8px;
+    z-index: 1000;
+    /* Ensure controls are above tabs if overlap occurs */
+}
+
+#control-strip button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    transition: background 0.2s;
+}
+
+#control-strip button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#btn-pin.pinned,
+#btn-compact.active {
+    background: rgba(119, 170, 255, 0.2);
+    border-color: #77aaff;
+}
+
+#tab-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 10px;
+    flex-grow: 1;
+    cursor: grab;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#tab-container:active {
+    cursor: grabbing;
+}
+
+#tab-container::-webkit-scrollbar {
+    display: none;
+}
+
+.tab-card {
+    min-width: 180px;
+    max-width: 220px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    border: 1px solid transparent;
+    position: relative;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-card:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.tab-card.active {
+    background: linear-gradient(180deg, rgba(80, 160, 255, 0.25) 0%, rgba(30, 30, 30, 0.6) 100%);
+    border: 1px solid #77aaff;
+    box-shadow: 0 0 12px rgba(119, 170, 255, 0.3), inset 0 0 4px rgba(119, 170, 255, 0.2);
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.tab-favicon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    flex-shrink: 0;
+    border-radius: 2px;
+}
+
+.tab-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    flex-grow: 1;
+    transition: opacity 0.2s;
+}
+
+/* --- Compact Mode --- */
+.compact-mode .tab-card {
+    min-width: 48px;
+    width: 48px;
+    max-width: 48px;
+    padding: 0;
+    justify-content: center;
+    overflow: hidden;
+    /* Hide overflow content initially */
+    z-index: 1;
+}
+
+.compact-mode .tab-card .tab-favicon {
+    margin-right: 0;
+}
+
+.compact-mode .tab-card .tab-title {
+    opacity: 0;
+    display: none;
+    /* Remove from flow to perfect centering of icon */
+}
+
+/* Hover Expand */
+.compact-mode .tab-card:hover {
+    width: 220px;
+    min-width: 220px;
+    max-width: 220px;
+    z-index: 999;
+    background: #333;
+    justify-content: flex-start;
+    padding: 0 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.compact-mode .tab-card:hover .tab-favicon {
+    margin-right: 10px;
+}
+
+.compact-mode .tab-card:hover .tab-title {
+    opacity: 1;
+    display: block;
+}
+
+/* Controls */
+.tab-controls {
+    display: none;
+    gap: 4px;
+    margin-left: auto;
+    z-index: 2000;
+    /* Ensure high z-index */
+    position: relative;
+    /* Needed for z-index */
+}
+
+.tab-card:hover .tab-controls {
+    display: flex;
+}
+
+.control-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    padding: 0;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    color: #fff;
+}

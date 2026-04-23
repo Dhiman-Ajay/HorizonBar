@@ -1,0 +1,90 @@
+/* panel.css */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1e1e1e; /* Dark mode background */
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden; /* Prevent body scroll, let tray scroll */
+}
+
+/* 
+ * NOTE: User requested "Horizontal UI" ("horizontal scrolling list of tabs")
+ * but also mentioned "flex-direction: column" in the panel.css instructions.
+ * To achieve a HORIZONTAL scrolling list in a vertical side panel, 
+ * we must use flex-direction: ROW (or column with writing-mode, but row is standard).
+ * We are prioritizing the "Horizontal UI" intent.
+ */
+#tab-tray {
+  display: flex;
+  flex-direction: row; /* Horizontal layout */
+  flex-wrap: nowrap; /* Prevent wrapping implies horizontal scroll */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-y: hidden;
+  height: 100vh; /* Full height of the panel */
+  align-items: center; /* Center tabs vertically within the row if needed, or stretch */
+  padding: 10px;
+  box-sizing: border-box;
+  gap: 10px;
+  
+  /* Modern scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: #555 #1e1e1e;
+}
+
+#tab-tray::-webkit-scrollbar {
+  height: 8px; /* Horizontal scrollbar height */
+}
+
+#tab-tray::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+#tab-tray::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 4px;
+  border: 2px solid #1e1e1e;
+}
+
+.tab-card {
+  background-color: #2d2d2d;
+  border: 1px solid #3e3e3e;
+  border-radius: 8px;
+  padding: 10px;
+  min-width: 150px;
+  max-width: 200px;
+  height: 60px; /* Fixed height for uniformity */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  user-select: none;
+  flex-shrink: 0; /* Don't shrink below min-width */
+}
+
+.tab-card:hover {
+  background-color: #3d3d3d;
+}
+
+.tab-card.active {
+  background-color: #3d3d3d;
+  border-color: #0078d4; /* Accent color */
+  box-shadow: 0 0 8px rgba(0, 120, 212, 0.4);
+}
+
+.tab-favicon {
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.tab-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+}

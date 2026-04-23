@@ -1,0 +1,34 @@
+{
+    "manifest_version": 3,
+    "name": "HorizonBar",
+    "version": "4.0",
+    "description": "HorizonBar: Persistent Horizontal Tab Manager",
+    "permissions": [
+        "tabs",
+        "storage",
+        "activeTab",
+        "scripting",
+        "system.display",
+        "favicon"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_title": "HorizonBar"
+    },
+    "commands": {
+        "toggle-bar": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+U",
+                "mac": "Command+Shift+U"
+            },
+            "description": "Toggle HorizonBar"
+        }
+    },
+        "icons": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    }
+}
